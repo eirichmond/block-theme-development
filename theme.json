@@ -131,6 +131,34 @@
 	},
 	"styles": {
 		"blocks": {
+			"core/button": {
+				"border": {
+					"radius": "8px"
+				},
+				"variations": {
+					"outline": {
+						"border": {
+							"bottom": {
+								"style": "solid",
+								"width": "1px"
+							},
+							"left": {
+								"style": "solid",
+								"width": "1px"
+							},
+							"radius": "8px",
+							"right": {
+								"style": "solid",
+								"width": "1px"
+							},
+							"top": {
+								"style": "solid",
+								"width": "1px"
+							}
+						}
+					}
+				}
+			},
 			"core/paragraph": {
 				"typography": {
 					"fontSize": "18px",
