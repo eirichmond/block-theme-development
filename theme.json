@@ -130,6 +130,22 @@
 		"useRootPaddingAwareAlignments": true
 	},
 	"styles": {
+		"blocks": {
+			"core/paragraph": {
+				"typography": {
+					"fontSize": "18px",
+					"lineHeight": "30px",
+					"fontStyle": "normal",
+					"fontWeight": "300"
+				},
+				"spacing": {
+					"margin": {
+						"top": "14px",
+						"bottom": "14px"
+					}
+				}
+			}
+		},
 		"elements": {
 			"h1": {
 				"typography": {
