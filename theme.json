@@ -130,6 +130,9 @@
 		"useRootPaddingAwareAlignments": true
 	},
 	"styles": {
+		"spacing": {
+			"blockGap": "0"
+		},
 		"blocks": {
 			"core/button": {
 				"border": {
