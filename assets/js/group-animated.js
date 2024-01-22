@@ -1,6 +1,6 @@
 (function () {
 	// Get the scrolling element
-	var scrollingElement = document.querySelector('header');
+	var scrollingElement = document.querySelector('.site-header');
 
 	// Get custom and alternative logo and hide alternative on the initial load
 	var customLogo = document.getElementById('custom-logo');
