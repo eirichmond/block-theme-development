@@ -1,0 +1,21 @@
+body.spacer {
+    margin-top: 120px;
+}
+
+.wp-block-template-part.scrolled {
+    background: var(--wp--preset--color--dark-green);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: -120px;
+    transition: all .33s cubic-bezier(.694, .0482, .335, 1);
+}
+
+.wp-block-template-part.scrolled.animate {
+    top: 0;
+}
+
+
+.scrolled .wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content {
+    color: white;
+}
