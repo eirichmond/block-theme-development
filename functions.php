@@ -1,13 +1,12 @@
 <?php
 
 /**
- * Adds a inline css style to a core block
+ * Adds a block style to a core group block
  * 
  * register_block_style();
  *
  * @return void
  */
-
 function holdinghands_block_styles() {
     register_block_style(
         'core/group',
@@ -40,82 +39,91 @@ function holdinghands_enqueue_block_styles() {
 add_action( 'init', 'holdinghands_enqueue_block_styles' );
 
 /**
- * 
+ * Enqueue javascript file for the front end functionality
+ *
+ * @return void
  */
-
 function holdinghands_enqueue_scripts() {
-    wp_enqueue_script('holdinghands-enqueue-scripts', get_template_directory_uri() . '/assets/js/group-animated.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('holdinghands-enqueue-scripts', get_template_directory_uri() . '/assets/js/group-animated.js', array(), '1.0', true);
 }
 add_action( 'wp_enqueue_scripts', 'holdinghands_enqueue_scripts' );
 
+/**
+ * Filter the custom logo and add an id for with javascript 
+ *
+ * @param [type] $custom_logo_attr
+ * @param [type] $custom_logo_id
+ * @param [type] $blog_id
+ * @return void
+ */
+function holdinghands_add_custom_logo_id( $custom_logo_attr, $custom_logo_id, $blog_id ) {
+    $custom_logo_attr['id'] = 'custom-logo';
+    return $custom_logo_attr;
+}
+add_filter( 'get_custom_logo_image_attributes', 'holdinghands_add_custom_logo_id', 10, 3 );
+
+/**
+ * Add a filter at block level 
+ *
+ * @param [type] $block_content
+ * @param [type] $block
+ * @return void
+ */
+function holdinghands_append_swap_logo( $block_content, $block ) {
+    $alternativeImageId = isset( $block['attrs']['alternativeImageId'] ) ? $block['attrs']['alternativeImageId'] : false;
+    
+    if ( ! $alternativeImageId ) {
+		return $block_content;
+	}
+    
+    $additional_image_url = wp_get_attachment_image_url( $alternativeImageId, array($block['attrs']['width']), '', array( 'class' => 'custom-logo-alternative', 'id' => 'swap-logo' ) );
+    $additional_image_src = wp_get_attachment_image_srcset( $alternativeImageId, array($block['attrs']['width']), '', array( 'class' => 'custom-logo-alternative', 'id' => 'swap-logo' ) );
+
+    // Create a DOMDocument object
+    $dom = new DOMDocument();
+    $dom->loadHTML($block_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+    // Create a DOMXPath object
+    $xpath = new DOMXPath($dom);
+
+    // Find the existing img element
+    $imgNode = $xpath->query('//div[@class="wp-block-site-logo"]//img')->item(0);
+
+    if ($imgNode) {
+        // Create a new img element
+        $newImg = $dom->createElement('img');
+        $newImg->setAttribute('width', $block['attrs']['width']);
+        $newImg->setAttribute('src', $additional_image_url);
+        $newImg->setAttribute('srcset', $additional_image_src);
+        $newImg->setAttribute('class', 'custom-logo-alternative');
+        $newImg->setAttribute('id', 'swap-logo');
+
+        // Append the new img element after the existing img
+        $imgNode->parentNode->appendChild($newImg);
+    }
+
+    $block_content = $dom->saveHTML();
+
+    return $block_content;
+}
+add_filter( 'render_block_core/site-logo', 'holdinghands_append_swap_logo', 10, 2 );
 
 /**
  * Enqueue Editor assets.
  */
-function example_project_enqueue_editor_assets() {
-    
-
+function holdinghands_enqueue_editor_assets() {
     $asset_file = include( get_template_directory() . '/build/index.asset.php');
 
     wp_enqueue_script(
-        'example-editor-scripts',
+        'holdinghands-editor-scripts',
         get_template_directory_uri() . '/build/index.js',
         $asset_file['dependencies'],
         $asset_file['version']
     );
 
     wp_enqueue_style(
-		'example-editor-scripts',
+		'holdinghands-editor-scripts',
 		get_template_directory_uri() . '/build/index.css',
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'example_project_enqueue_editor_assets' );
-
-/**
- * Render icons on the frontend.
- */
-function enable_column_direction_render_block_columns( $block_content, $block ) {
-    $alternativeImageId = isset( $block['attrs']['alternativeImageId'] ) ? $block['attrs']['alternativeImageId'] : false;
-    
-    if ( ! $alternativeImageId ) {
-		return $block_content;
-	}
-
-    
-    // Since we will need the JavaScript for this block, now enqueue it.
-    // Note: Remove if not using front-end JavaScript to control column order.
-    wp_enqueue_script( 'enable-column-direction-frontend-scripts' );
-    
-    $additionalImg = wp_get_attachment_image( $alternativeImageId, array($block['attrs']['width']), '', array( 'class' => 'custom-logo-alternative', 'id' => 'swap-logo' ) );
-
-    // Create a DOMDocument from the HTML string
-    $dom = new DOMDocument();
-    $dom->loadHTML($block_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-    // Find the parent div with class 'wp-block-site-logo'
-    $logoDiv = $dom->getElementsByTagName('div')->item(0);
-
-    // Create a new DOMDocument from the additional img HTML string
-    $additionalImgDom = new DOMDocument();
-    $additionalImgDom->loadHTML($additionalImg, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-    // Import the additional img node to the original DOMDocument
-    $importedNode = $dom->importNode($additionalImgDom->getElementsByTagName('img')->item(0), false);
-
-    // Append the additional img node after the existing image node
-    $logoDiv->appendChild($importedNode);
-
-    $block_content = $dom->saveHTML();
-
-    return $block_content;
-}
-
-add_filter( 'render_block_core/site-logo', 'enable_column_direction_render_block_columns', 10, 2 );
-
-function add_custom_logo_id( $custom_logo_attr, $custom_logo_id, $blog_id ) {
-
-    $custom_logo_attr['id'] = 'custom-logo';
-    return $custom_logo_attr;
-
-}
-add_filter( 'get_custom_logo_image_attributes', 'add_custom_logo_id', 10, 3 );
+add_action( 'enqueue_block_editor_assets', 'holdinghands_enqueue_editor_assets' );
