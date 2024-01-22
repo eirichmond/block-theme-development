@@ -1,24 +1,6 @@
 <?php
 
 /**
- * Adds a block style to a core group block
- * 
- * register_block_style();
- *
- * @return void
- */
-function holdinghands_block_styles() {
-    register_block_style(
-        'core/group',
-        array(
-            'name'         => 'animated-green-background',
-            'label'        => __( 'Animated', 'holdinghands' )
-        )
-    );
-}
-add_action( 'init', 'holdinghands_block_styles' );
-
-/**
  * Adds css style sheet at block level
  * 
  * wp_enqueue_block_style();
