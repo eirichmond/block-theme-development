@@ -43,14 +43,7 @@
 			"wideSize": "1200px"
 		},
 		"spacing": {
-			"units": [
-				"%",
-				"px",
-				"em",
-				"rem",
-				"vh",
-				"vw"
-			]
+			"units": ["%", "px", "em", "rem", "vh", "vw"]
 		},
 		"typography": {
 			"fontFamilies": [
@@ -60,25 +53,19 @@
 							"fontFamily": "Roboto",
 							"fontStyle": "normal",
 							"fontWeight": "300",
-							"src": [
-								"file:./assets/fonts/roboto_normal_300.ttf"
-							]
+							"src": ["file:./assets/fonts/roboto_normal_300.ttf"]
 						},
 						{
 							"fontFamily": "Roboto",
 							"fontStyle": "normal",
 							"fontWeight": "500",
-							"src": [
-								"file:./assets/fonts/roboto_normal_500.ttf"
-							]
+							"src": ["file:./assets/fonts/roboto_normal_500.ttf"]
 						},
 						{
 							"fontFamily": "Roboto",
 							"fontStyle": "normal",
 							"fontWeight": "700",
-							"src": [
-								"file:./assets/fonts/roboto_normal_700.ttf"
-							]
+							"src": ["file:./assets/fonts/roboto_normal_700.ttf"]
 						}
 					],
 					"fontFamily": "Roboto",
