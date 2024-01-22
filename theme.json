@@ -3,8 +3,8 @@
 	"settings": {
 		"appearanceTools": true,
 		"color": {
-			"defaultPalette": false,
 			"custom": true,
+			"defaultPalette": false,
 			"palette": [
 				{
 					"color": "#ffffff",
@@ -43,46 +43,33 @@
 			"wideSize": "1200px"
 		},
 		"spacing": {
-			"units": [
-				"%",
-				"px",
-				"em",
-				"rem",
-				"vh",
-				"vw"
-			]
+			"units": ["%", "px", "em", "rem", "vh", "vw"]
 		},
 		"typography": {
 			"fontFamilies": [
 				{
-					"fontFamily": "Roboto",
-					"slug": "roboto",
 					"fontFace": [
 						{
 							"fontFamily": "Roboto",
 							"fontStyle": "normal",
 							"fontWeight": "300",
-							"src": [
-								"file:./assets/fonts/roboto_normal_300.ttf"
-							]
+							"src": ["file:./assets/fonts/roboto_normal_300.ttf"]
 						},
 						{
 							"fontFamily": "Roboto",
 							"fontStyle": "normal",
 							"fontWeight": "500",
-							"src": [
-								"file:./assets/fonts/roboto_normal_500.ttf"
-							]
+							"src": ["file:./assets/fonts/roboto_normal_500.ttf"]
 						},
 						{
 							"fontFamily": "Roboto",
 							"fontStyle": "normal",
 							"fontWeight": "700",
-							"src": [
-								"file:./assets/fonts/roboto_normal_700.ttf"
-							]
+							"src": ["file:./assets/fonts/roboto_normal_700.ttf"]
 						}
-					]
+					],
+					"fontFamily": "Roboto",
+					"slug": "roboto"
 				}
 			],
 			"fontSizes": [
@@ -100,8 +87,8 @@
 				},
 				{
 					"fluid": {
-						"min": "1.39rem",
-						"max": "1.85rem"
+						"max": "1.85rem",
+						"min": "1.39rem"
 					},
 					"name": "Large",
 					"size": "1.85rem",
@@ -109,8 +96,8 @@
 				},
 				{
 					"fluid": {
-						"min": "1.85rem",
-						"max": "2.5rem"
+						"max": "2.5rem",
+						"min": "1.85rem"
 					},
 					"name": "Extra Large",
 					"size": "1.95rem",
@@ -118,8 +105,8 @@
 				},
 				{
 					"fluid": {
-						"min": "2.5rem",
-						"max": "2.8rem"
+						"max": "2.8rem",
+						"min": "2.5rem"
 					},
 					"name": "XX Large",
 					"size": "2.8rem",
@@ -130,14 +117,8 @@
 		"useRootPaddingAwareAlignments": true
 	},
 	"styles": {
-		"spacing": {
-			"blockGap": "0"
-		},
 		"blocks": {
 			"core/button": {
-				"border": {
-					"radius": "8px"
-				},
 				"variations": {
 					"outline": {
 						"border": {
@@ -145,35 +126,59 @@
 								"style": "solid",
 								"width": "1px"
 							},
+							"color": null,
 							"left": {
 								"style": "solid",
 								"width": "1px"
 							},
-							"radius": "8px",
+							"radius": "4px",
 							"right": {
 								"style": "solid",
 								"width": "1px"
 							},
+							"style": null,
 							"top": {
 								"style": "solid",
 								"width": "1px"
+							},
+							"width": null
+						},
+						"spacing": {
+							"padding": {
+								"bottom": "var(--wp--preset--spacing--30)",
+								"left": "var(--wp--preset--spacing--50)",
+								"right": "var(--wp--preset--spacing--50)",
+								"top": "var(--wp--preset--spacing--30)"
 							}
+						},
+						"typography": {
+							"fontSize": "11px",
+							"letterSpacing": "1px",
+							"textTransform": "uppercase"
 						}
 					}
 				}
 			},
-			"core/paragraph": {
+			"core/navigation": {
 				"typography": {
-					"fontSize": "18px",
-					"lineHeight": "30px",
+					"fontSize": "14px",
 					"fontStyle": "normal",
-					"fontWeight": "300"
-				},
+					"fontWeight": "500",
+					"textTransform": "uppercase"
+				}
+			},
+			"core/paragraph": {
 				"spacing": {
 					"margin": {
-						"top": "14px",
-						"bottom": "14px"
+						"bottom": "14px",
+						"top": "14px"
 					}
+				},
+				"typography": {
+					"fontSize": "18px",
+					"fontStyle": "normal",
+					"fontWeight": "300",
+					"lineHeight": "30px"
 				}
 			}
 		},
@@ -210,6 +215,9 @@
 					"fontSize": "var(--wp--preset--font-size--medium)"
 				}
 			}
+		},
+		"spacing": {
+			"blockGap": "0"
 		},
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--roboto)"
