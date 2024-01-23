@@ -72,4 +72,50 @@ function holdinghands_enqueue_editor_assets() {
 }
 add_action( 'enqueue_block_editor_assets', 'holdinghands_enqueue_editor_assets' );
 
+/**
+ * Add a filter at block level 
+ *
+ * @param string $block_content
+ * @param array $block
+ * @return void
+ */
+function holdinghands_append_swap_logo( $block_content, $block ) {
+    $alternativeImageId = isset( $block['attrs']['alternativeImageId'] ) ? $block['attrs']['alternativeImageId'] : false;
+    
+    if ( ! $alternativeImageId ) {
+		return $block_content;
+	}
+    
+    $additional_image_url = wp_get_attachment_image_url( $alternativeImageId, array($block['attrs']['width']) );
+    $additional_image_src = wp_get_attachment_image_srcset( $alternativeImageId, array($block['attrs']['width']) );
+
+    // Create a DOMDocument object
+    $dom = new DOMDocument();
+    $dom->loadHTML($block_content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+    // Create a DOMXPath object
+    $xpath = new DOMXPath($dom);
+
+    // Find the existing img element
+    $imgNode = $xpath->query('//div[@class="wp-block-site-logo"]//img')->item(0);
+
+    if ($imgNode) {
+        // Create a new img element
+        $newImg = $dom->createElement('img');
+        $newImg->setAttribute('width', $block['attrs']['width']);
+        $newImg->setAttribute('src', $additional_image_url);
+        $newImg->setAttribute('srcset', $additional_image_src);
+        $newImg->setAttribute('class', 'custom-logo-alternative');
+        $newImg->setAttribute('id', 'swap-logo');
+
+        // Append the new img element after the existing img
+        $imgNode->parentNode->appendChild($newImg);
+    }
+
+    $block_content = $dom->saveHTML();
+
+    return $block_content;
+}
+add_filter( 'render_block_core/site-logo', 'holdinghands_append_swap_logo', 10, 2 );
+
 ?>
