@@ -118,4 +118,19 @@ function holdinghands_append_swap_logo( $block_content, $block ) {
 }
 add_filter( 'render_block_core/site-logo', 'holdinghands_append_swap_logo', 10, 2 );
 
+/**
+ * Filter the custom logo and add an id for use with javascript 
+ *
+ * @param [type] $custom_logo_attr
+ * @param [type] $custom_logo_id
+ * @param [type] $blog_id
+ * @return void
+ */
+function holdinghands_add_custom_logo_id( $custom_logo_attr, $custom_logo_id, $blog_id ) {
+    $custom_logo_attr['id'] = 'custom-logo';
+    return $custom_logo_attr;
+}
+add_filter( 'get_custom_logo_image_attributes', 'holdinghands_add_custom_logo_id', 10, 3 );
+
+
 ?>
