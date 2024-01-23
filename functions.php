@@ -36,5 +36,26 @@ function holdinghands_enqueue_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'holdinghands_enqueue_scripts' );
 
+/**
+ * Adds css style sheet at block level
+ * 
+ * wp_enqueue_block_style();
+ *
+ * @return void
+ */
+function holdinghands_enqueue_block_styles() {
+    wp_enqueue_block_style(
+        'core/group',
+        array(
+            'handle' => 'animated-green-background',
+            'src' => get_stylesheet_directory_uri() . '/assets/css/group-animated.css',
+            'version' => wp_get_theme( get_template() )->get( 'Version' ),
+            'path' => get_stylesheet_directory_uri() . '/assets/css/group-animated.css'
+        )
+    );
+}
+add_action( 'init', 'holdinghands_enqueue_block_styles' );
+
+
 
 ?>

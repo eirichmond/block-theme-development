@@ -7,9 +7,13 @@
 		// set current scroll scrollPosition
 		var scrollPosition = window.scrollY;
 		if (scrollPosition > 120) {
-			console.log('scrolled past 120');
+			scrollingElement.classList.add('scrolled');
+			setTimeout(function () {
+				scrollingElement.classList.add('animate');
+			}, 0.3); // 300 milliseconds delay (0.3 seconds)
 		} else {
-			console.log(scrollPosition);
+			scrollingElement.classList.remove('scrolled');
+			scrollingElement.classList.remove('animate');
 		}
 	}
 

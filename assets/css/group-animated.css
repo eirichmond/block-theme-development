@@ -1,0 +1,18 @@
+.site-header {
+    transition: all .33s cubic-bezier(.694, .0482, .335, 1);
+}
+
+.site-header.scrolled {
+    background: var(--wp--preset--color--dark-green);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: -120px;
+    /** offset the element to display off screen **/
+}
+
+
+.site-header.scrolled.animate {
+    top: 0;
+    /** simulate the sliding down effect **/
+}
