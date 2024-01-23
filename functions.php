@@ -22,8 +22,19 @@ function holdinghands_template_part( $block_content, $block ) {
 
     $block_content = $p->get_updated_html();
     return $block_content;
-    
+
 }
 add_filter( 'render_block_core/template-part', 'holdinghands_template_part', 10, 2 );
+
+/**
+ * Enqueue javascript file for the front end functionality
+ *
+ * @return void
+ */
+function holdinghands_enqueue_scripts() {
+    wp_enqueue_script( 'holdinghands-enqueue-scripts', get_template_directory_uri() . '/assets/js/group-animated.js', array(), '1.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'holdinghands_enqueue_scripts' );
+
 
 ?>
