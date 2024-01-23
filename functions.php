@@ -56,6 +56,20 @@ function holdinghands_enqueue_block_styles() {
 }
 add_action( 'init', 'holdinghands_enqueue_block_styles' );
 
+/**
+ * Enqueue Editor assets.
+ */
+function holdinghands_enqueue_editor_assets() {
+    $asset_file = include( get_template_directory() . '/build/index.asset.php');
 
+    wp_enqueue_script(
+        'holdinghands-editor-scripts',
+        get_template_directory_uri() . '/build/index.js',
+        $asset_file['dependencies'],
+        $asset_file['version']
+    );
+
+}
+add_action( 'enqueue_block_editor_assets', 'holdinghands_enqueue_editor_assets' );
 
 ?>

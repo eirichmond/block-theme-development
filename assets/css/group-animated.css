@@ -19,4 +19,5 @@ body.spacer {
 .site-header.scrolled.animate {
     top: 0;
     /** simulate the sliding down effect **/
+    color: var(--wp--preset--color--white);
 }
