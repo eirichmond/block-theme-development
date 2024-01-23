@@ -1,8 +1,18 @@
 (function () {
 	// Get body element to fix document jump
 	var bodyElement = document.querySelector('body');
+
 	// Get the scrolling element
 	var scrollingElement = document.querySelector('.site-header');
+
+	// Get custom logo element
+	var customLogo = document.getElementById('custom-logo');
+
+	// Get alternative logo and hide alternative on the initial load
+	var swapLogo = document.getElementById('swap-logo');
+	if (swapLogo) {
+		swapLogo.style.display = 'none';
+	}
 
 	// Function to toggle the class based on scroll position
 	function toggleScrolledClass() {
