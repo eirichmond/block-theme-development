@@ -1,3 +1,7 @@
+body.spacer {
+    margin-top: 120px;
+}
+
 .site-header {
     transition: all .33s cubic-bezier(.694, .0482, .335, 1);
 }
