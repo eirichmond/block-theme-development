@@ -24,10 +24,18 @@
 			setTimeout(function () {
 				scrollingElement.classList.add('animate');
 			}, 0.3); // 300 milliseconds delay (0.3 seconds)
+			customLogo.style.display = 'none';
+			if (swapLogo) {
+				swapLogo.style.display = 'block';
+			}
 		} else {
 			bodyElement.classList.remove('spacer');
 			scrollingElement.classList.remove('scrolled');
 			scrollingElement.classList.remove('animate');
+			customLogo.style.display = 'block';
+			if (swapLogo) {
+				swapLogo.style.display = 'none';
+			}
 		}
 	}
 
