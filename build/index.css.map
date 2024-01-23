@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":";;;AAAA;IACI,gBAAgB;IAChB,oBAAoB;AACxB,C","sources":["webpack://holdinghands/./src/index.css"],"sourcesContent":[".alternative-logo-container {\n    margin-top: -8px;\n    padding: 0 16px 16px;\n}"],"names":[],"sourceRoot":""}

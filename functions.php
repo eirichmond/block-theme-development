@@ -69,6 +69,11 @@ function holdinghands_enqueue_editor_assets() {
         $asset_file['version']
     );
 
+    wp_enqueue_style(
+		'holdinghands-editor-styles',
+		get_template_directory_uri() . '/build/index.css',
+	);
+
 }
 add_action( 'enqueue_block_editor_assets', 'holdinghands_enqueue_editor_assets' );
 

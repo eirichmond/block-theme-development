@@ -10,6 +10,8 @@ import {
 } from '@wordpress/block-editor';
 import { Button } from '@wordpress/components';
 
+import './index.css';
+
 /**
  * Add the attribute needed for alternative image id and name.
  *
