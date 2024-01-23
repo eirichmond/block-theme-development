@@ -121,9 +121,9 @@ add_filter( 'render_block_core/site-logo', 'holdinghands_append_swap_logo', 10, 
 /**
  * Filter the custom logo and add an id for use with javascript 
  *
- * @param [type] $custom_logo_attr
- * @param [type] $custom_logo_id
- * @param [type] $blog_id
+ * @param array $custom_logo_attr
+ * @param int $custom_logo_id
+ * @param int $blog_id
  * @return void
  */
 function holdinghands_add_custom_logo_id( $custom_logo_attr, $custom_logo_id, $blog_id ) {
