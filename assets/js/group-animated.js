@@ -1,13 +1,13 @@
 (function () {
 	// Get body element to fix document jump
-	var bodyElement = document.querySelector('body');
+	const bodyElement = document.querySelector('body');
 	// Get the scrolling element
-	var scrollingElement = document.querySelector('.site-header');
+	const scrollingElement = document.querySelector('.site-header');
 
 	// Function to toggle the class based on scroll position
 	function toggleScrolledClass() {
 		// set current scroll scrollPosition
-		var scrollPosition = window.scrollY;
+		const scrollPosition = window.scrollY;
 		if (scrollPosition > 120) {
 			bodyElement.classList.add('spacer');
 			scrollingElement.classList.add('scrolled');
