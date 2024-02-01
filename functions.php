@@ -45,7 +45,7 @@ add_action( 'wp_enqueue_scripts', 'holdinghands_enqueue_scripts' );
  */
 function holdinghands_enqueue_block_styles() {
     wp_enqueue_block_style(
-        'core/group',
+        'core/navigation',
         array(
             'handle' => 'animated-green-background',
             'src' => get_stylesheet_directory_uri() . '/assets/css/group-animated.css',
