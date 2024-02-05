@@ -1,0 +1,14 @@
+{
+  "name": "holdinghands",
+  "version": "1.0.0",
+  "description": "Extend core blocks",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "wp-scripts start"
+  },
+  "author": "Elliott Richmond",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/scripts": "^27.1.0"
+  }
+}

@@ -20,3 +20,7 @@ body.spacer {
     top: 0;
     /** simulate the sliding down effect **/
 }
+
+.site-header.scrolled.animate a {
+    color: #fff;
+}
